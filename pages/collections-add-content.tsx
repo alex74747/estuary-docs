@@ -28,7 +28,7 @@ class Example extends React.Component {
         body: JSON.stringify({
           contents: ${contents},
           cids: ${cids},
-          collection: "${COLLECTION_ID}"
+          coluuid: "${COLLECTION_ID}"
         })
       })
       .then(data => {
