@@ -53,6 +53,21 @@ function GetProviderAdded(props) {
             your provider is qualified we will add it to our provider index and you will receive
             storage deals.
           </p>
+          
+          <p>
+            The expectations below are intended to give you an idea of the deals you will be receiving,
+            they are <b>not</b> hard requirements and will not prevent you from being added to the
+            provider index. 
+          </p>
+
+          <ul className={styles.ul}>
+            <li className={styles.li}>SPs are expected to have an unsealed copy and a sealed copy of the data</li>
+            <li className={styles.li}>SPs are expected to enable and provide Fast Retrievals (unsealed sectors)</li>
+            <li className={styles.li}>SPs are expected to offer free retrieval</li>    
+            <li className={styles.li}>SPs are expected to set all deals for the longest available duration</li>
+            <li className={styles.li}>SPs have the freedom to accept as many deals as they can handle and reject deals as needed.</li>
+            <li className={styles.li}>The standard start epoch for deals is 72 hours</li>
+          </ul>
 
           <div className={styles.title} style={{ marginTop: 48 }}>
             Name
