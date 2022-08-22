@@ -44,7 +44,7 @@ class Example extends React.Component {
   }
 }`;
 
-const curl = `curl -X POST https://api.estuary.tech/collections/add-content -d '{ "contents": ${contents}, "cids": ${cids}, "collection": "${COLLECTION_ID}" }' -H "Content-Type: application/json" -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY"`;
+const curl = `curl -X POST https://api.estuary.tech/collections/add-content -d '{ "contents": ${contents}, "cids": ${cids}, "coluuid": "${COLLECTION_ID}" }' -H "Content-Type: application/json" -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY"`;
 
 function APICollectionAddContent(props) {
   return (

@@ -27,7 +27,7 @@ There are multiple ways to add data to a collection. Here we will explore two en
 #### /collections/add-content
 Let's add two CIDs **QmW3sbi25Veqkg3o9qCMkTuosSw6S8hSPzAEffwA1tCf5S** and **QmS8dypUY34t3UF7Xd98KhuxqQ8F45WckJCGkdhNnwgvM4** using this endpoint:
 ```
-curl -X POST https://api.estuary.tech/collections/add-content -d '{ "contents": [], "cids": [QmS8dypUY34t3UF7Xd98KhuxqQ8F45WckJCGkdhNnwgvM4, QmW3sbi25Veqkg3o9qCMkTuosSw6S8hSPzAEffwA1tCf5S], "collection": "28d923b5-2561-43ee-8ab3-fb42088666f2" }' -H "Content-Type: application/json" -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY"
+curl -X POST https://api.estuary.tech/collections/add-content -d '{ "contents": [], "cids": [QmS8dypUY34t3UF7Xd98KhuxqQ8F45WckJCGkdhNnwgvM4, QmW3sbi25Veqkg3o9qCMkTuosSw6S8hSPzAEffwA1tCf5S], "coluuid": "28d923b5-2561-43ee-8ab3-fb42088666f2" }' -H "Content-Type: application/json" -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY"
 ```
 **Obs:** Notice we used the uuid of the collection we created earlier (**28d923b5-2561-43ee-8ab3-fb42088666f2**) to identify the collection we want to upload content to.
 
@@ -49,13 +49,13 @@ curl -X POST https://api.estuary.tech/content/add -H "Authorization: Bearer REPL
 
 Now that we have the estuaryId (which is **10** in this example), we can add **file1.txt** to our collection, again using its UUID to identify it:
 ```
-curl -X POST https://api.estuary.tech/collections/add-content -d '{ "contents": [10], "cids": [], "collection": "28d923b5-2561-43ee-8ab3-fb42088666f2" }' -H "Content-Type: application/json" -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY"
+curl -X POST https://api.estuary.tech/collections/add-content -d '{ "contents": [10], "cids": [], "coluuid": "28d923b5-2561-43ee-8ab3-fb42088666f2" }' -H "Content-Type: application/json" -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY"
 ```
 
 #### /content/add-ipfs
 We can also use the **/content/add-ipfs** endpoint to add CIDs to estuary and also put them in a collection at the same API call. Using this endpoint we must specify the content by CID (in the **root** field):
 ```
-curl -X POST https://api.estuary.tech/content/add-ipfs -d '{ "name": "file1.txt", "root": "QmS8dypUY34t3UF7Xd98KhuxqQ8F45WckJCGkdhNnwgvM4", "collection": "28d923b5-2561-43ee-8ab3-fb42088666f2", "collectionPath": "/dir1/file1.txt" }' -H "Content-Type: application/json" -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY"
+curl -X POST https://api.estuary.tech/content/add-ipfs -d '{ "name": "file1.txt", "root": "QmS8dypUY34t3UF7Xd98KhuxqQ8F45WckJCGkdhNnwgvM4", "coluuid": "28d923b5-2561-43ee-8ab3-fb42088666f2", "collectionPath": "/dir1/file1.txt" }' -H "Content-Type: application/json" -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY"
 ```
 
 Notice we also specified a new field **collectionPath**. In the next section we will explore another feature of collections: collection directory paths.
@@ -63,7 +63,7 @@ Notice we also specified a new field **collectionPath**. In the next section we 
 ### Collection directory paths
 Besides having several collections to organize data, users can also further organize content inside collections using directory paths. Directory paths are filesystem-like paths such as **/this/is/a/path/to/a/file**. To create a path, we just need to put a file inside it using the **collectionPath** field. Let's take the example used in the last section:
 ```
-curl -X POST https://api.estuary.tech/content/add-ipfs -d '{ "name": "file1.txt", "root": "QmS8dypUY34t3UF7Xd98KhuxqQ8F45WckJCGkdhNnwgvM4", "collection": "28d923b5-2561-43ee-8ab3-fb42088666f2", "collectionPath": "/dir1/file1.txt" }' -H "Content-Type: application/json" -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY"
+curl -X POST https://api.estuary.tech/content/add-ipfs -d '{ "name": "file1.txt", "root": "QmS8dypUY34t3UF7Xd98KhuxqQ8F45WckJCGkdhNnwgvM4", "coluuid": "28d923b5-2561-43ee-8ab3-fb42088666f2", "collectionPath": "/dir1/file1.txt" }' -H "Content-Type: application/json" -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY"
 ```
 Since the **collectionPath** for **file1.txt** is **/dir1/file1.txt**, the path **/dir1/** inside that collection gets created, and we can list only the contents of that path:
 ```
