@@ -47,7 +47,7 @@ curl -X POST https://api.estuary.tech/content/add -H "Authorization: Bearer REPL
 ```
 **Obs:** estuaryId can also be called **contentID** or **contID**
 
-Now that we have the estuaryId (which is **10** in this example), we can add **file1.txt** to our collection, again using its UUID to identify it:
+Now that we have the estuaryId (which is **10** in this example), we can add **file1.txt** to a collection that we specify with a uuid, as before. 
 ```
 curl -X POST https://api.estuary.tech/collections/add-content -d '{ "contents": [10], "cids": [], "coluuid": "28d923b5-2561-43ee-8ab3-fb42088666f2" }' -H "Content-Type: application/json" -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY"
 ```
@@ -83,7 +83,7 @@ curl -X GET -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" "https://api.estu
 When a piece of content doesn't have a directory path in a collection, it is impossible to list it using the **/collections/fs/list** endpoint since that requires a **dir** to be specified and, even if it isn't, it defaults to the **/** path. In order to list all the contents of a collection, even the ones that don't have a directory path set, we can use **/collections/content/:collection-uuid**:
 
 ```
-curl -X GET -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" https://api.estuary.tech/collections/content/28d923b5-2561-43ee-8ab3-fb42088666f2
+curl -X GET -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" https://api.estuary.tech/collections/content?coluuid=28d923b5-2561-43ee-8ab3-fb42088666f2
 ```
 
 ### Deleting a collection
