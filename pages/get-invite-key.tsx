@@ -50,7 +50,7 @@ function GetInviteKey(props) {
               https://estuary.tech
             </a>{' '}
             to make Filecoin storage deals? Please fill out this form! We'll get back to you either
-            over Twitter or e-mail if we think you have an meaningful public data set.
+            over Twitter or e-mail if we think you have a meaningful public data set.
           </p>
 
           <div className={styles.title} style={{ marginTop: 48 }}>
