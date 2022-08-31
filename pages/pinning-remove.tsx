@@ -4,7 +4,8 @@ import * as React from 'react';
 
 import App from '@components/App';
 
-const markdown = `# ➟ /pinning/pins/:pinid
+const endpoint = '/pinning/pins/{pinid}';
+const markdown = `# ➟ ` + endpoint + `
 
 ## Overview 
 Remove a pinned object.
@@ -24,27 +25,28 @@ const key = 'pinning-remove';
 const route = 'https://api.estuary.tech/pinning/pins/:id';
 
 const code = `class Example extends React.Component {
-  componentDidMount() {
-    fetch('${route}', {
-      method: 'DELETE',
-      headers: {
-        Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
-      }
-    })
-      .then(data => {
-        return data.json();
-      })
-      .then(data => {
-        this.setState({ ...data });
-      });
-  }
+              componentDidMount() {
+                fetch('https://api.estuary.tech/pinning/pins/{pinid}', {
+                  method: 'DELETE',
+                  headers: {
+                    Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
+                  },
+                  
+                })
+                  .then(data => {
+                    return data.json();
+                  })
+                  .then(data => {
+                    this.setState({ ...data });
+                  });
+              }
 
-  render() {
-    return <pre>{JSON.stringify(this.state, null, 1)}</pre>;
-  }
-}`;
+              render() {
+                return <pre>{JSON.stringify(this.state, null, 1)}</pre>;
+              }
+            }`;
 
-const curl = `curl -X DELETE ${route} -H "Content-Type: application/json" -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY"`;
+const curl = `curl -X DELETE https://api.estuary.tech/pinning/pins/{pinid} -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json"`;
 
 function PinningDelete(props) {
   return (

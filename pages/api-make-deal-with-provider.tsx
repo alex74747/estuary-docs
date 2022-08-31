@@ -4,7 +4,8 @@ import * as React from 'react';
 
 import App from '@components/App';
 
-const markdown = `# ➟ /deals/make/:miner
+const endpoint = '/deals/make/{miner}';
+const markdown = `# ➟ ` + endpoint + `
 
 Use this endpoint to make a deal with a storage provider and a file you have already uploaded to Estuary. You will need the local ID of that file.
 
@@ -20,30 +21,30 @@ We will be adding more code examples and more details over time. Thanks for bear
 `;
 
 const code = `class Example extends React.Component {
-  componentDidMount() {
-    fetch('https://api.estuary.tech/deals/make/f02620',{
-        method: "POST",
-        headers: {
-          Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
-        },
-        body: JSON.stringify({
-          content: 123232
-        })
-      })
-      .then(data => {
-        return data.json();
-      })
-      .then(data => {
-        this.setState({ ...data });
-      });
-  }
+              componentDidMount() {
+                fetch('https://api.estuary.tech/deals/make/{miner}', {
+                  method: 'POST',
+                  headers: {
+                    Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
+                  },
+                  body: JSON.stringify({
+dealRequest: 'DEALREQUEST',
+})
+                })
+                  .then(data => {
+                    return data.json();
+                  })
+                  .then(data => {
+                    this.setState({ ...data });
+                  });
+              }
 
-  render() {
-    return <pre>{JSON.stringify(this.state, null, 1)}</pre>;
-  }
-}`;
+              render() {
+                return <pre>{JSON.stringify(this.state, null, 1)}</pre>;
+              }
+            }`;
 
-const curl = `curl -X POST https://api.estuary.tech/deals/make/f02620 -d '{ "content": 123232}' -H "Content-Type: application/json" -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY"`;
+const curl = `curl -X POST https://api.estuary.tech/deals/make/{miner} -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json" -d '{"dealRequest": "DEALREQUEST"}'`;
 
 function APIMakeDealWithProvider(props) {
   return (

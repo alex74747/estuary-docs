@@ -4,7 +4,8 @@ import * as React from 'react';
 
 import App from '@components/App';
 
-const markdown = `# ➟ /public/miners/storage/query/:miner
+const endpoint = '/public/miners/storage/query/{miner}';
+const markdown = `# ➟ ` + endpoint + `
 
 Use this endpoint to get the query ask and verified ask for any miner.
 

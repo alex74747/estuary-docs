@@ -4,7 +4,8 @@ import * as React from 'react';
 
 import App from '@components/App';
 
-const markdown = `# ➟ /pinning/pins
+const endpoint = '/pinning/pins';
+const markdown = `# ➟ ` + endpoint + `
 
 ## Overview
 Pinning is a method that allows you to instruct IPFS to store a specific object at a specific location – by default, your local node, though this can be changed if you utilise a third-party remote pinning service. This endpoint lists all of the pinned objects.
@@ -26,27 +27,28 @@ const key = 'pinning-list';
 const route = 'https://api.estuary.tech/pinning/pins';
 
 const code = `class Example extends React.Component {
-  componentDidMount() {
-    fetch('${route}', {
-      method: 'GET',
-      headers: {
-        Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
-      },
-    })
-      .then(data => {
-        return data.json();
-      })
-      .then(data => {
-        this.setState({ ...data });
-      });
-  }
+              componentDidMount() {
+                fetch('https://api.estuary.tech/pinning/pins', {
+                  method: 'POST',
+                  headers: {
+                    Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
+                  },
+                  
+                })
+                  .then(data => {
+                    return data.json();
+                  })
+                  .then(data => {
+                    this.setState({ ...data });
+                  });
+              }
 
-  render() {
-    return <pre>{JSON.stringify(this.state, null, 1)}</pre>;
-  }
-}`;
+              render() {
+                return <pre>{JSON.stringify(this.state, null, 1)}</pre>;
+              }
+            }`;
 
-const curl = `curl -X GET ${route} -H "Content-Type: application/json" -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY"`;
+const curl = `curl -X POST https://api.estuary.tech/pinning/pins -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json"`;
 
 function PinningGet(props) {
   return (

@@ -4,7 +4,8 @@ import * as React from 'react';
 
 import App from '@components/App';
 
-const markdown = `# ➟ /collections/:coluuid/commit
+const endpoint = '/collections/{coluuid}/commit';
+const markdown = `# ➟ ` + endpoint + `
 
 ## Overview
 
@@ -19,29 +20,29 @@ const COLLECTION_ID = `845c2920-0201-416f-86f9-c7da7b859707`;
 const contents = `[]`;
 const cids = `[]`;
 
-const code = `
-class Example extends React.Component {
-  componentDidMount() {
-    fetch('https://api.estuary.tech/collections/${COLLECTION_ID}/commit',{
-        method: "POST",
-        headers: {
-          Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
-        }
-      })
-      .then(data => {
-        return data.json();
-      })
-      .then(data => {
-        this.setState({ ...data });
-      });
-  }
+const code = `class Example extends React.Component {
+              componentDidMount() {
+                fetch('https://api.estuary.tech/collections/{coluuid}/commit', {
+                  method: 'POST',
+                  headers: {
+                    Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
+                  },
+                  
+                })
+                  .then(data => {
+                    return data.json();
+                  })
+                  .then(data => {
+                    this.setState({ ...data });
+                  });
+              }
 
-  render() {
-    return <pre>{JSON.stringify(this.state, null, 1)}</pre>;
-  }
-}`;
+              render() {
+                return <pre>{JSON.stringify(this.state, null, 1)}</pre>;
+              }
+            }`;
 
-const curl = `curl -X POST https://api.estuary.tech/collections/${COLLECTION_ID}/commit -H "Content-Type: application/json" -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY"`;
+const curl = `curl -X POST https://api.estuary.tech/collections/{coluuid}/commit -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json"`;
 
 function APICollectionCommit(props) {
   return (
