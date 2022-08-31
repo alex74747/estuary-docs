@@ -15,7 +15,7 @@ For more of an explanation, read [this](https://docs.estuary.tech/tutorial-uploa
 
 Adding this query paramter will add the file to any collection.
 
-### ?colpath=/path/to/thing
+### ?dir=/path/to/thing
 
 Adding this query parameter will add the file to a specific path in the collection
 
@@ -70,7 +70,9 @@ const code = `class Example extends React.Component {
   }
 }`;
 
-const curl = `curl -X POST https://api.estuary.tech/content/add -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json"  -H "Content-Type: multipart/form-data" -F "file=FILE"`;
+
+const curl = `curl -X POST https://api.estuary.tech/content/add?coluuid=UUID-OF-YOUR-COLLECTION&dir=/foo/bar -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json" -H "Content-Type: multipart/form-data" -F "data=@PATH_TO_FILE_BUT_REMEMBER_THE_@_SYMBOL_IS_REQUIRED"`;
+
 
 function APIContentAdd(props) {
   return (
