@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import App from '@components/App';
 
-const markdown = `# ➟ /collections/:collection-id/commit
+const markdown = `# ➟ /collections/:coluuid/commit
 
 ## Overview
 

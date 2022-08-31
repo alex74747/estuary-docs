@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import App from '@components/App';
 
-const markdown = `# ➟ /content/by-cid/:cid
+const markdown = `# ➟ /public/by-cid/:cid
 
 Use this to view a CID information like: which providers have a copy, deal ids, and if it is pinned on Estuary. 
 

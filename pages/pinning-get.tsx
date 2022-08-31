@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import App from '@components/App';
 
-const markdown = `# ➟ /pinning/pins/:id
+const markdown = `# ➟ /pinning/pins/:pinid
 
 ## Overview
 Get a pinned object.
