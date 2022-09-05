@@ -4,7 +4,8 @@ import * as React from 'react';
 
 import App from '@components/App';
 
-const markdown = `# ➟ /content/by-cid/:cid
+const endpoint = '/public/by-cid/{cid}';
+const markdown = `# ➟ ` + endpoint + `
 
 Use this to view a CID information like: which providers have a copy, deal ids, and if it is pinned on Estuary. 
 
@@ -17,25 +18,26 @@ We will be adding more code examples and more details over time. Thanks for bear
 `;
 
 const code = `class Example extends React.Component {
-  componentDidMount() {
-    fetch('https://api.estuary.tech/content/by-cid/QmQTi9dkvZtHoWdiDT5LYPoe9G3yL9AzPTR9V2nPr8DAaN',{
-        method: "GET",
-        headers: {
-          Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
-        },
-      })
-      .then(data => {
-        return data.json();
-      })
-      .then(data => {
-        this.setState({ ...data });
-      });
-  }
+              componentDidMount() {
+                fetch('https://api.estuary.tech/public/by-cid/{cid}', {
+                  method: 'GET',
+                  headers: {
+                    Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
+                  },
+                  
+                })
+                  .then(data => {
+                    return data.json();
+                  })
+                  .then(data => {
+                    this.setState({ ...data });
+                  });
+              }
 
-  render() {
-    return <pre>{JSON.stringify(this.state, null, 1)}</pre>;
-  }
-}`;
+              render() {
+                return <pre>{JSON.stringify(this.state, null, 1)}</pre>;
+              }
+            }`;
 
 const curl =
   'curl -X GET -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" https://api.estuary.tech/content/by-cid/QmQTi9dkvZtHoWdiDT5LYPoe9G3yL9AzPTR9V2nPr8DAaN';

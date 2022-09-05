@@ -43,18 +43,6 @@ const CollectionsSet = [
     href: '/collections-list-content',
     method: 'GET',
   },
-  {
-    key: 'api-collections-fs-list-collection-path-content',
-    title: 'FS list content of a path',
-    href: '/collections-fs-list-collection-path-content',
-    method: 'GET',
-  },
-  {
-    key: 'api-collections-add-content-to-path',
-    title: 'FS add content to path',
-    href: '/collections-fs-add-content-to-path',
-    method: 'POST',
-  },
 ];
 
 const TutorialSet = [

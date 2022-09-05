@@ -4,7 +4,8 @@ import * as React from 'react';
 
 import App from '@components/App';
 
-const markdown = `# ➟ /public/metrics/deals-on-chain
+const endpoint = '/public/metrics/deals-on-chain';
+const markdown = `# ➟ ` + endpoint + `
 
 Use this to get data you can make a graph for.
 
@@ -17,20 +18,26 @@ We will be adding more code examples and more details over time. Thanks for bear
 `;
 
 const code = `class Example extends React.Component {
-  componentDidMount() {
-    fetch('https://api.estuary.tech/public/metrics/deals-on-chain')
-      .then(data => {
-        return data.json();
-      })
-      .then(data => {
-        this.setState({ ...data });
-      });
-  }
+              componentDidMount() {
+                fetch('https://api.estuary.tech/public/metrics/deals-on-chain', {
+                  method: 'GET',
+                  headers: {
+                    Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
+                  },
+                  
+                })
+                  .then(data => {
+                    return data.json();
+                  })
+                  .then(data => {
+                    this.setState({ ...data });
+                  });
+              }
 
-  render() {
-    return <pre>{JSON.stringify(this.state, null, 1)}</pre>;
-  }
-}`;
+              render() {
+                return <pre>{JSON.stringify(this.state, null, 1)}</pre>;
+              }
+            }`;
 
 const curl = 'curl -X GET https://api.estuary.tech/public/metrics/deals-on-chain';
 

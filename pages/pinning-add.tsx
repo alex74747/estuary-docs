@@ -4,7 +4,8 @@ import * as React from 'react';
 
 import App from '@components/App';
 
-const markdown = `# ➟ /pinning/pins
+const endpoint = '/pinning/pins';
+const markdown = `# ➟ ` + endpoint + `
 
 ## Overview
 Add a new pin object for the current access token.
@@ -28,31 +29,28 @@ const key = 'pinning-add';
 const route = 'https://api.estuary.tech/pinning/pins';
 
 const code = `class Example extends React.Component {
-  componentDidMount() {
-    fetch('${route}', {
-      method: 'POST',
-      headers: {
-        Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
-      },
-      body: JSON.stringify({
-        name: '${name}',
-        cid: '${cid}',
-      })
-    })
-      .then(data => {
-        return data.json();
-      })
-      .then(data => {
-        this.setState({ ...data });
-      });
-  }
+              componentDidMount() {
+                fetch('https://api.estuary.tech/pinning/pins', {
+                  method: 'POST',
+                  headers: {
+                    Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
+                  },
+                  
+                })
+                  .then(data => {
+                    return data.json();
+                  })
+                  .then(data => {
+                    this.setState({ ...data });
+                  });
+              }
 
-  render() {
-    return <pre>{JSON.stringify(this.state, null, 1)}</pre>;
-  }
-}`;
+              render() {
+                return <pre>{JSON.stringify(this.state, null, 1)}</pre>;
+              }
+            }`;
 
-const curl = `curl -X POST ${route} -d '{ "name": "${name}", "cid": "${cid}" }' -H "Content-Type: application/json" -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY"`;
+const curl = `curl -X POST https://api.estuary.tech/pinning/pins -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json"`;
 
 function PinningAdd(props) {
   return (

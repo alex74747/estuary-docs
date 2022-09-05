@@ -4,7 +4,8 @@ import * as React from 'react';
 
 import App from '@components/App';
 
-const markdown = `# ➟ /content/add-car
+const endpoint = '/content/add-car';
+const markdown = `# ➟ ` + endpoint + `
 Use this endpoint to write a Content-Addressable Archive (CAR) file, and make storage deals for its contents.
 For more information on CARs check the [spec page](https://ipld.io/specs/transport/car/)
 
@@ -20,7 +21,7 @@ We will be adding more code examples and more details over time. Thanks for bear
 
 
 const key = `api-content-add-car`;
-const curl = `curl -X POST https://api.estuary.tech/content/add-car -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json" -T PATH_TO_FILE`;
+const curl = `curl -X POST https://api.estuary.tech/content/add-car?filename=FILENAME&commp=COMMP&size=SIZE -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json" -d '{"body": "BODY"}'`;
 
 const code = `class Example extends React.Component {
  upload(e) {
@@ -41,7 +42,7 @@ const code = `class Example extends React.Component {
     
     xhr.open(
       "POST", 
-      url+"/content/add-car" 
+      url+"` + endpoint + `"
     );
     xhr.setRequestHeader(
       "Authorization", 

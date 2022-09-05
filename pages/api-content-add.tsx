@@ -4,7 +4,8 @@ import * as React from 'react';
 
 import App from '@components/App';
 
-const markdown = `# ➟ /content/add
+const endpoint = '/content/add';
+const markdown = `# ➟ ` + endpoint + `
 
 Use this endpoint to upload data to the Estuary Node, one file at a time.
 
@@ -69,7 +70,9 @@ const code = `class Example extends React.Component {
   }
 }`;
 
+
 const curl = `curl -X POST https://api.estuary.tech/content/add?coluuid=UUID-OF-YOUR-COLLECTION&dir=/foo/bar -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json" -H "Content-Type: multipart/form-data" -F "data=@PATH_TO_FILE_BUT_REMEMBER_THE_@_SYMBOL_IS_REQUIRED"`;
+
 
 function APIContentAdd(props) {
   return (

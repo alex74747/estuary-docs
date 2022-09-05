@@ -7,7 +7,8 @@ import App from '@components/App';
 const name = '"A new collection"';
 const description = '"A new collection test"';
 
-const markdown = `# ➟ /collections/create
+const endpoint = '/collections/create';
+const markdown = `# ➟ ` + endpoint + `
 
 Use this endpoint to create a collection where you can add data to it.
 
@@ -21,31 +22,30 @@ A collection is used to store a set of files or 'directory' of data in the Filec
 To add files to this collection or 'directory' (which are pinned as child of the CID created for this collection), use the Add Content POST API call.`;
 
 const code = `class Example extends React.Component {
-  componentDidMount() {
-    fetch('https://api.estuary.tech/collections/create',{
-        method: "POST",
-        headers: {
-          Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
-        },
-        body: JSON.stringify({
-          name: ${name},
-          description: ${description}
-        })
-      })
-      .then(data => {
-        return data.json();
-      })
-      .then(data => {
-        this.setState({ ...data });
-      });
-  }
+              componentDidMount() {
+                fetch('https://api.estuary.tech/collections/create', {
+                  method: 'POST',
+                  headers: {
+                    Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
+                  },
+                  body: JSON.stringify({
+body: 'BODY',
+})
+                })
+                  .then(data => {
+                    return data.json();
+                  })
+                  .then(data => {
+                    this.setState({ ...data });
+                  });
+              }
 
-  render() {
-    return <pre>{JSON.stringify(this.state, null, 1)}</pre>;
-  }
-}`;
+              render() {
+                return <pre>{JSON.stringify(this.state, null, 1)}</pre>;
+              }
+            }`;
 
-const curl = `curl -X POST https://api.estuary.tech/collections/create -d '{ "name": ${name}, "description": ${description} }' -H "Content-Type: application/json" -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY"`;
+const curl = `curl -X POST https://api.estuary.tech/collections/create -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json" -d '{"body": "BODY"}'`;
 
 function APICollectionCreate(props) {
   return (

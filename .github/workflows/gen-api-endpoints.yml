@@ -1,0 +1,23 @@
+name: Generate API endpoints
+
+on: push
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Build
+      run: ./scripts/gen-and-update-pages.sh
+
+    - name: Get changed files
+      id: changed-files
+      uses: tj-actions/changed-files@main
+
+    - name: Add files
+      uses: maxgfr/github-commit-push-file@main
+      with:
+        commit_name: 'docs: update API endpoints'
+      if: steps.changed-files.outputs.any_changed == 'true'

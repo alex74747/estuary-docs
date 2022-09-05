@@ -4,7 +4,8 @@ import * as React from 'react';
 
 import App from '@components/App';
 
-const markdown = `# ➟ /content/deals
+const endpoint = '/content/deals';
+const markdown = `# ➟ ` + endpoint + `
 
 Use this endpoint to get all of the content on Estuary that is also stored on Filecoin through our [Estuary Node](https://estuary.tech).
 
@@ -19,25 +20,26 @@ We will be adding more code examples and more details over time. Thanks for bear
 `;
 
 const code = `class Example extends React.Component {
-  componentDidMount() {
-    fetch('https://api.estuary.tech/content/deals', {
-      method: "GET",
-      headers: {
-        Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
-      },
-    })
-      .then(data => {
-        return data.json();
-      })
-      .then(data => {
-        this.setState({ ...data });
-      });
-  }
+              componentDidMount() {
+                fetch('https://api.estuary.tech/content/deals?limit=LIMIT&offset=OFFSET', {
+                  method: 'GET',
+                  headers: {
+                    Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
+                  },
+                  
+                })
+                  .then(data => {
+                    return data.json();
+                  })
+                  .then(data => {
+                    this.setState({ ...data });
+                  });
+              }
 
-  render() {
-    return <pre>{JSON.stringify(this.state, null, 1)}</pre>;
-  }
-}`;
+              render() {
+                return <pre>{JSON.stringify(this.state, null, 1)}</pre>;
+              }
+            }`;
 
 const curl =
   'curl -X GET -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" https://api.estuary.tech/content/deals';

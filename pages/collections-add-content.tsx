@@ -4,7 +4,8 @@ import * as React from 'react';
 
 import App from '@components/App';
 
-const markdown = `# ➟ /content/add
+const endpoint = '/content/add';
+const markdown = `# ➟ ` + endpoint + `
 
 To add content to a collection that you have already created with the 'create collection' POST API call, use the /content/add endpoint passing the coluuid and dir (optional) query parameters.
 
@@ -64,7 +65,7 @@ const code = `class Example extends React.Component {
   }
 }`;
 
-const curl = `curl -X POST https://api.estuary.tech/content/add?coluuid=UUID-OF-YOUR-COLLECTION&dir=/foo/bar -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json" -H "Content-Type: multipart/form-data" -F "data=@PATH_TO_FILE_BUT_REMEMBER_THE_@_SYMBOL_IS_REQUIRED"`;
+const curl = `curl -X POST https://api.estuary.tech/content/add -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json"  -H "Content-Type: multipart/form-data" -F "file=FILE"`;
 
 function APICollectionAddContent(props) {
   return (
