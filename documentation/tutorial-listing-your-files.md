@@ -5,24 +5,36 @@ After you have [uploaded a file](https://docs.estuary.tech/tutorial-uploading-yo
 Once you do so, here is an example of the output:
 
 ```
-{
-  "id": 16,
-  "cid": "QmTMBh4bCQFgzr1fTCjVb5pRBUe7v9673HTLZWh77sUHUx",
-  "name": "nasa-space-settlements-a-design-study.pdf",
-  "userId": 3,
+ "42": {
+  "id": 36534620,
+  "updatedAt": "2022-09-06T22:21:08.039349Z",
+  "cid": "bafybeicgpnok4bl2rkf4ceojlb376henq6f6ufwqqvyyzmuo4xloxypuwm",
+  "name": "nature-6.mp4",
+  "userId": 243,
   "description": "",
-  "size": 30886087,
+  "size": 83073242,
+  "type": 0,
   "active": true,
   "offloaded": false,
   "replication": 6,
   "aggregatedIn": 0,
-  "aggregate": false
-}
+  "aggregate": false,
+  "pinning": false,
+  "pinMeta": "",
+  "replace": false,
+  "origins": "",
+  "failed": false,
+  "location": "SHUTTLE1f8fbb04-44c2-41a2-a8ac-d3057589dd93HANDLE",
+  "dagSplit": false,
+  "splitFrom": 0
+ },
 ```
 
-You can use the CID to retrieve the file immediately by using an IPFS Gateway.
+You can use the CID to retrieve the file immediately by using an IPFS Gateway. Here is an example:
 
-> [https://dweb.link/ipfs/QmTMBh4bCQFgzr1fTCjVb5pRBUe7v9673HTLZWh77sUHUx](https://dweb.link/ipfs/QmTMBh4bCQFgzr1fTCjVb5pRBUe7v9673HTLZWh77sUHUx)
+> [https://api.estuary.tech/gw/ipfs/bafybeicgpnok4bl2rkf4ceojlb376henq6f6ufwqqvyyzmuo4xloxypuwm](https://api.estuary.tech/gw/ipfs/bafybeicgpnok4bl2rkf4ceojlb376henq6f6ufwqqvyyzmuo4xloxypuwm)
+
+The general format for accessing your content by CID is as follows: **https://api.estuary.tech/gw/ipfs/YOUR_DESIRED_CID**
 
 ### You are done
 
