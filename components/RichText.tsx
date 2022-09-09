@@ -7,7 +7,10 @@ import { Remarkable } from 'remarkable';
 import RemarkableReactRenderer from 'remarkable-react';
 
 export default function RichText(props) {
-  const md = new Remarkable();
+  const md = new Remarkable({
+    linkTarget: '_blank',
+  });
+
   const markdown = md.render(props.children);
 
   return (

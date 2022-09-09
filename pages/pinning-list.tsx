@@ -6,12 +6,14 @@ import App from '@components/App';
 
 const markdown = `# ➟ /pinning/pins
 
-## Overview
-Pinning is a method that allows you to instruct IPFS to store a specific object at a specific location – by default, your local node, though this can be changed if you utilise a third-party remote pinning service. This endpoint lists all of the pinned objects.
+This endpoint lists all contents, whether they are pinned (active), inactive, failed, etc. **Important:** This is different than the **/content/list** endpoint, which will only list pinned (active) contents.
 
 ## Useful for the following scenarios
 - Retrieve a list of pinned objects and show them on a dashboard or a user interface.
 - Validate or verify any pinned objects by retrieving the list and evaluating each.
+
+## Overview of Pinning
+Pinning is a method that allows you to instruct IPFS to store a specific object at a specific location – by default, your local node, though this can be changed if you utilise a third-party remote pinning service. This endpoint lists all of the pinned objects.
 
 ### Swagger
 For more information about this API swagger specification, see [here](swagger-ui-page#/pinning/get_pinning_pins)
