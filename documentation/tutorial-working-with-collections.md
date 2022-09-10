@@ -31,9 +31,9 @@ curl -X POST https://api.estuary.tech/collections/add-content -d '{ "contents": 
 ```
 **Obs:** Notice we used the uuid of the collection we created earlier (**28d923b5-2561-43ee-8ab3-fb42088666f2**) to identify the collection we want to upload content to.
 
-We can also use **estuaryId**s to specify contents that are already uploaded to Estuary in order to include them in a collection. When a file gets uploaded to Estuary, it gets a corresponding **estuaryId**. Let's first add a file (**file1.txt**) to estuary using the **/content/add** endpoint in order to get its contentID:
+As an alternative to using **cid**s, we can also use **estuaryId**s to specify contents that are already uploaded to Estuary and include them in a collection. When a file gets uploaded to Estuary, it gets a corresponding **estuaryId**. Let's first add a file (**file1.txt**) to estuary using the **/content/add** endpoint in order to get its contentID:
 ```
-curl -X POST https://api.estuary.tech/content/add -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json" -H "Content-Type: multipart/form-data" -F "data=@/tmp/file1.txt"
+curl -X POST https://upload.estuary.tech/content/add -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json" -H "Content-Type: multipart/form-data" -F "data=@/tmp/file1.txt"
 
 {
   "cid": "bafkqadlumvzxi2lom4qgm2lmmufa",
@@ -55,45 +55,47 @@ curl -X POST https://api.estuary.tech/collections/add-content -d '{ "contents": 
 #### /content/add-ipfs
 We can also use the **/content/add-ipfs** endpoint to add CIDs to estuary and also put them in a collection at the same API call. Using this endpoint we must specify the content by CID (in the **root** field):
 ```
-curl -X POST https://api.estuary.tech/content/add-ipfs -d '{ "name": "file1.txt", "root": "QmS8dypUY34t3UF7Xd98KhuxqQ8F45WckJCGkdhNnwgvM4", "coluuid": "28d923b5-2561-43ee-8ab3-fb42088666f2", "collectionPath": "/dir1/file1.txt" }' -H "Content-Type: application/json" -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY"
+curl -X POST https://api.estuary.tech/content/add-ipfs -d '{ "filename": "file1.txt", "root": "QmS8dypUY34t3UF7Xd98KhuxqQ8F45WckJCGkdhNnwgvM4", "coluuid": "28d923b5-2561-43ee-8ab3-fb42088666f2", "dir": "/dir1/file1.txt" }' -H "Content-Type: application/json" -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY"
 ```
 
-Notice we also specified a new field **collectionPath**. In the next section we will explore another feature of collections: collection directory paths.
+Notice we also specified a new field **dir**. In the next section we will explore another feature of collections: collection directory paths.
 
 ### Collection directory paths
-Besides having several collections to organize data, users can also further organize content inside collections using directory paths. Directory paths are filesystem-like paths such as **/this/is/a/path/to/a/file**. To create a path, we just need to put a file inside it using the **collectionPath** field. Let's take the example used in the last section:
+Besides having several collections to organize data, users can also further organize content inside collections using directory paths. Directory paths are filesystem-like paths such as **/this/is/a/path/to/a/file**. To create a path, we just need to put a file inside it using the **dir** field. Let's take the example used in the last section:
 ```
-curl -X POST https://api.estuary.tech/content/add-ipfs -d '{ "name": "file1.txt", "root": "QmS8dypUY34t3UF7Xd98KhuxqQ8F45WckJCGkdhNnwgvM4", "coluuid": "28d923b5-2561-43ee-8ab3-fb42088666f2", "collectionPath": "/dir1/file1.txt" }' -H "Content-Type: application/json" -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY"
+curl -X POST https://api.estuary.tech/content/add-ipfs -d '{ "filename": "file1.txt", "root": "QmS8dypUY34t3UF7Xd98KhuxqQ8F45WckJCGkdhNnwgvM4", "coluuid": "28d923b5-2561-43ee-8ab3-fb42088666f2", "dir": "/dir1/file1.txt" }' -H "Content-Type: application/json" -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY"
 ```
-Since the **collectionPath** for **file1.txt** is **/dir1/file1.txt**, the path **/dir1/** inside that collection gets created, and we can list only the contents of that path:
+Since the **dir** for **file1.txt** is **/dir1/file1.txt**, the path **/dir1/** inside that collection gets created, and we can list only the contents of that path:
 ```
-curl -X GET -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" "https://api.estuary.tech/collections/fs/list?col=28d923b5-2561-43ee-8ab3-fb42088666f2&dir=/dir1"
+curl -X GET -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" "https://api.estuary.tech/collections/content?coluuid=28d923b5-2561-43ee-8ab3-fb42088666f2&dir=/dir1"
 [
   {
     "name": "file1.txt",
-    "dir": false,
+    "type": "directory",,
     "size": 20,
     "contId": 11,
+    "dir":"/dir1",
     "cid": "QmS8dypUY34t3UF7Xd98KhuxqQ8F45WckJCGkdhNnwgvM4"
+    "coluuid":"28d923b5-2561-43ee-8ab3-fb42088666f2"
   }
 ]
 ```
 
 ### Listing all the contents of a collections
-When a piece of content doesn't have a directory path in a collection, it is impossible to list it using the **/collections/fs/list** endpoint since that requires a **dir** to be specified and, even if it isn't, it defaults to the **/** path. In order to list all the contents of a collection, even the ones that don't have a directory path set, we can use **/collections/content/:collection-uuid**:
+In order to list all the contents of a collection, even the ones that don't have a directory path set, we can use **/collections/content?coluuid=YOUR_COLLECTION_UUID**:
 
 ```
 curl -X GET -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" https://api.estuary.tech/collections/content?coluuid=28d923b5-2561-43ee-8ab3-fb42088666f2
 ```
 
 ### Deleting a collection
-In case you want to delete a previously created collection, you can do so with the following curl:
+You can use the **/content/list** endpoint to view all collections you have created. If you want to delete a previously created collection, you can do so with the following curl:
 
 ```
-curl -X DELETE  https://api.estuary.tech/collections/<uuid> -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY"
+curl -X DELETE  https://api.estuary.tech/collections/<coluuid> -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY"
 ```
 
-where the query parameter **uuid** is the uuid of the collection you are trying to delete.
+where the query parameter **coluuid** is the uuid of the collection you are trying to delete.
 
 
 

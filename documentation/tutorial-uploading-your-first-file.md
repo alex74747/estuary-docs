@@ -17,7 +17,7 @@ Based on the size of the data you used for this step, the example to the right m
 You can also use fetch in this example if you want.
 
 ```
-fetch('https://api.estuary.tech/content/add', {
+fetch('https://upload.estuary.tech/content/add', {
   method: "POST",
   headers: {
     Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',

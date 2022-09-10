@@ -5,7 +5,10 @@ import * as React from 'react';
 import App from '@components/App';
 
 const endpoint = '/content/add-car';
-const markdown = `# ➟ ` + endpoint + `
+const markdown =
+  `# ➟ ` +
+  endpoint +
+  `
 Use this endpoint to write a Content-Addressable Archive (CAR) file, and make storage deals for its contents.
 For more information on CARs check the [spec page](https://ipld.io/specs/transport/car/)
 
@@ -17,13 +20,11 @@ For more information about this API swagger specification, see [here](swagger-ui
 We will be adding more code examples and more details over time. Thanks for bearing with us and our team! If you have ideas, write us some [feedback](https://docs.estuary.tech/feedback).
 `;
 
-
-
-
 const key = `api-content-add-car`;
-const curl = `curl -X POST https://api.estuary.tech/content/add-car?filename=FILENAME&commp=COMMP&size=SIZE -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json" -d '{"body": "BODY"}'`;
+const curl = `curl -X POST https://upload.estuary.tech/content/add-car?filename=FILENAME&commp=COMMP&size=SIZE -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json" -d '{"body": "BODY"}'`;
 
-const code = `class Example extends React.Component {
+const code =
+  `class Example extends React.Component {
  upload(e) {
     e.persist();
     
@@ -32,7 +33,7 @@ const code = `class Example extends React.Component {
     // because we want to show progress. But you can use
     // fetch in this example if you like.
     const xhr = new XMLHttpRequest();
-    var url = "https://api.estuary.tech";
+    var url = "https://upload.estuary.tech";
     xhr.upload.onprogress = (e) => {
       this.setState({ 
         loaded: event.loaded, 
@@ -42,7 +43,9 @@ const code = `class Example extends React.Component {
     
     xhr.open(
       "POST", 
-      url+"` + endpoint + `"
+      url+"` +
+  endpoint +
+  `"
     );
     xhr.setRequestHeader(
       "Authorization", 
@@ -60,13 +63,13 @@ const code = `class Example extends React.Component {
       </React.Fragment>
     );
   }
-}`
+}`;
 
 function APIContentAddCAR(props) {
   return (
     <App
       title="Estuary Documentation: API: /content/add-car"
-      description="https://api.estuary.tech/content/add-car"
+      description="https://upload.estuary.tech/content/add-car" // question: where does this show up?
       url={`https://docs.estuary.tech/${key}`}
       active={key}
       curl={curl}
@@ -83,4 +86,3 @@ export async function getServerSideProps(context) {
 }
 
 export default APIContentAddCAR;
-
