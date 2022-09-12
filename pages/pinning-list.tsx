@@ -29,26 +29,26 @@ const key = 'pinning-list';
 const route = 'https://api.estuary.tech/pinning/pins';
 
 const code = `class Example extends React.Component {
-              componentDidMount() {
-                fetch('https://api.estuary.tech/pinning/pins', {
-                  method: 'POST',
-                  headers: {
-                    Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
-                  },
-                  
-                })
-                  .then(data => {
-                    return data.json();
-                  })
-                  .then(data => {
-                    this.setState({ ...data });
-                  });
-              }
+  componentDidMount() {
+    fetch('https://api.estuary.tech/pinning/pins', {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
+      },
 
-              render() {
-                return <pre>{JSON.stringify(this.state, null, 1)}</pre>;
-              }
-            }`;
+    })
+      .then(data => {
+        return data.json();
+      })
+      .then(data => {
+        this.setState({ ...data });
+      });
+  }
+
+  render() {
+    return <pre>{JSON.stringify(this.state, null, 1)}</pre>;
+  }
+}`;
 
 const curl = `curl -X POST https://api.estuary.tech/pinning/pins -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json"`;
 

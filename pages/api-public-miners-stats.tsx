@@ -18,26 +18,26 @@ We will be adding more code examples and more details over time. Thanks for bear
 `;
 
 const code = `class Example extends React.Component {
-              componentDidMount() {
-                fetch('https://api.estuary.tech/public/miners/stats/{miner}', {
-                  method: 'GET',
-                  headers: {
-                    Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
-                  },
-                  
-                })
-                  .then(data => {
-                    return data.json();
-                  })
-                  .then(data => {
-                    this.setState({ ...data });
-                  });
-              }
+  componentDidMount() {
+    fetch('https://api.estuary.tech/public/miners/stats/{miner}', {
+      method: 'GET',
+      headers: {
+        Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
+      },
 
-              render() {
-                return <pre>{JSON.stringify(this.state, null, 1)}</pre>;
-              }
-            }`;
+    })
+      .then(data => {
+        return data.json();
+      })
+      .then(data => {
+        this.setState({ ...data });
+      });
+  }
+
+  render() {
+    return <pre>{JSON.stringify(this.state, null, 1)}</pre>;
+  }
+}`;
 
 const curl = 'curl -X GET https://api.estuary.tech/public/miners/stats/f0135078';
 

@@ -8,6 +8,7 @@ import json
 import urllib.request
 from urllib.parse import urlencode
 from pathlib import Path
+from textwrap import dedent
 
 BASE_API_URL = 'https://api.estuary.tech'
 SWAGGER_FILE_URL = "https://raw.githubusercontent.com/application-research/estuary/master/docs/swagger.json"
@@ -115,4 +116,4 @@ if __name__ == '__main__':
             }}
         '''
         with open('code-snippets/'+endpoint.replace('/', '')+'/js.txt', 'w+') as txt_file:
-            txt_file.write(js_string)
+            txt_file.write(dedent(js_string))
