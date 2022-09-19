@@ -61,9 +61,9 @@ Still confusing? Check out the [source code](https://github.com/application-rese
 
 ### People are making deals against my system, where are the logs?
 
-- All of the miners we work with are located on this [API documentation page](https://docs.estuary.tech/api-public-miners) and on the bottom of [https://estuary.tech](https://estuary.tech).
+- All of the miners we work with are located on this [API documentation page](https://docs.estuary.tech/api-public-miners) and [here](https://estuary.tech/ecosystem).
 - All of our stats are publicly available on this [API documentation page](https://docs.estuary.tech/api-public-stats) or visible from [https://estuary.tech](https://estuary.tech).
-- You can find custom miner pages for each miner on [https://estuary.tech](https://estuary.tech).
+- You can find custom miner pages for each miner on [https://estuary.tech/ecosystem](https://estuary.tech/ecosystem).
 
 ### I am a developer, how do I start?
 

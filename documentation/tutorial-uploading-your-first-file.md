@@ -6,7 +6,7 @@ Once you have an API key, you can use the code shown to upload a file to the Fil
 
 - The add api has an upper size limit of about **30 GB**, larger files will need to be broken up.
 
-- We pick 6 Filecoin miners for you, so you don't have to worry about knowing about any. If you are curious which Miners [https://estuary.tech](https://estuary.tech) works with, scroll to the bottom of the screen.
+- We pick 6 Filecoin miners for you, so you don't have to worry about knowing about any. If you are curious which Miners [https://estuary.tech](https://estuary.tech) works with, click [here](https://estuary.tech/ecosystem).
 
 - If any miner fails to store your deal, we find another.
 
