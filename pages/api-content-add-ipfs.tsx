@@ -5,7 +5,10 @@ import * as React from 'react';
 import App from '@components/App';
 
 const endpoint = '/content/add-ipfs';
-const markdown = `# ➟ ` + endpoint + `
+const markdown =
+  `# ➟ ` +
+  endpoint +
+  `
 
 Use this endpoint to take an existing IPFS CID, and make storage deals for it.
 
@@ -29,10 +32,10 @@ const code = `class Example extends React.Component {
                 fetch('https://api.estuary.tech/content/add-ipfs', {
                   method: 'POST',
                   headers: {
-                    Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
+                    Authorization: 'Bearer YOUR_API_KEY_HERE',
                   },
                   body: JSON.stringify({
-body: 'BODY',
+root: 'YOUR_CID_HERE',
 })
                 })
                   .then(data => {
