@@ -19,7 +19,7 @@ We will be adding more code examples and more details over time. Thanks for bear
 
 const code = `class Example extends React.Component {
   componentDidMount() {
-    fetch('https://api.estuary.tech/public/miners/failures/{miner}?miner=MINER', {
+    fetch('https://api.estuary.tech/public/miners/failures/{miner}', {
       method: 'GET',
       headers: {
         Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
