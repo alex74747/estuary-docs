@@ -7,10 +7,13 @@ import App from '@components/App';
 const name = '"A new collection"';
 const description = '"A new collection test"';
 
-const endpoint = '/collections/create';
-const markdown = `# ➟ ` + endpoint + `
+const endpoint = '/collections/';
+const markdown =
+  `# ➟ ` +
+  endpoint +
+  `
 
-Use this endpoint to create a collection where you can add data to it.
+Use the POST method on this endpoint to create a collection where you can add data to it.
 
 ### Swagger
 For more information about this API swagger specification, see [here](swagger-ui-page#/collections/post_collections_create)
@@ -23,13 +26,14 @@ To add files to this collection or 'directory' (which are pinned as child of the
 
 const code = `class Example extends React.Component {
               componentDidMount() {
-                fetch('https://api.estuary.tech/collections/create', {
+                fetch('https://api.estuary.tech/collections/', {
                   method: 'POST',
                   headers: {
                     Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
                   },
                   body: JSON.stringify({
-body: 'BODY',
+description: 'COLLECTION_DESCRIPTION',
+name: 'COLLECTION_NAME'
 })
                 })
                   .then(data => {
@@ -45,7 +49,7 @@ body: 'BODY',
               }
             }`;
 
-const curl = `curl -X POST https://api.estuary.tech/collections/create -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json" -d '{"body": "BODY"}'`;
+const curl = `curl -X POST "https://api.estuary.tech/collections/" -H "Accept: application/json"  -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -d '{"name":"COLLECTION_NAME", "description":"COLLECTION_DESCRIPTION"}'`;
 
 function APICollectionCreate(props) {
   return (
