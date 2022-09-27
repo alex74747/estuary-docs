@@ -19,7 +19,13 @@ We will be adding more code examples and more details over time. Thanks for bear
 
 const code = `class Example extends React.Component {
   componentDidMount() {
-    fetch('https://api.estuary.tech/public/miners/storage/query/f0135078')
+    fetch('https://api.estuary.tech/public/miners/storage/query/{miner}', {
+      method: 'GET',
+      headers: {
+        Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
+      },
+
+    })
       .then(data => {
         return data.json();
       })
