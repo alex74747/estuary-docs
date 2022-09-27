@@ -5,7 +5,10 @@ import * as React from 'react';
 import App from '@components/App';
 
 const endpoint = '/collections/{coluuid}/commit';
-const markdown = `# ➟ ` + endpoint + `
+const markdown =
+  `# ➟ ` +
+  endpoint +
+  `
 
 ## Overview
 
@@ -22,7 +25,7 @@ const cids = `[]`;
 
 const code = `class Example extends React.Component {
   componentDidMount() {
-    fetch('https://api.estuary.tech/collections/{coluuid}/commit', {
+    fetch('https://api.estuary.tech/collections/REPLACE_ME_WITH_A_COLUUID/commit', {
       method: 'POST',
       headers: {
         Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
@@ -42,13 +45,13 @@ const code = `class Example extends React.Component {
   }
 }`;
 
-const curl = `curl -X POST https://api.estuary.tech/collections/{coluuid}/commit -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json"`;
+const curl = `curl -X POST https://api.estuary.tech/collections/REPLACE_ME_WITH_A_COLUUID/commit -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json"`;
 
 function APICollectionCommit(props) {
   return (
     <App
-        title="Estuary Documentation: API: /collections/:collection-id/commit"
-        description="https://api.estuary.tech/collections/:collection-id/commit"
+      title="Estuary Documentation: API: /collections/:collection-id/commit"
+      description="https://api.estuary.tech/collections/:collection-id/commit"
       url="https://docs.estuary.tech/collections-commit"
       active="api-collections-commit"
       curl={curl}

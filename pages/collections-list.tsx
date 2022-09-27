@@ -4,10 +4,13 @@ import * as React from 'react';
 
 import App from '@components/App';
 
-const endpoint = '/collections/list';
-const markdown = `# ➟ ` + endpoint + `
+const endpoint = '/collections/';
+const markdown =
+  `# ➟ ` +
+  endpoint +
+  `
 
-Use this endpoint to get the list of collections you have made
+Use the GET method on this endpoint to get the list of all collections you have made
 
 ### Swagger
 For more information about this API swagger specification, see [here](swagger-ui-page#/collections/get_collections_list)
@@ -19,7 +22,7 @@ We will be adding more code examples and more details over time. Thanks for bear
 
 const code = `class Example extends React.Component {
   componentDidMount() {
-    fetch('https://api.estuary.tech/collections/list', {
+    fetch('https://api.estuary.tech/collections/', {
       method: 'GET',
       headers: {
         Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
@@ -40,13 +43,13 @@ const code = `class Example extends React.Component {
 }`;
 
 const curl =
-  'curl -X GET -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" https://api.estuary.tech/collections/list';
+  'curl -X GET -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" https://api.estuary.tech/collections/';
 
 function APICollectionsList(props) {
   return (
     <App
-      title="Estuary Documentation: API: /collections/list"
-      description="https://api.estuary.tech/collections/list"
+      title="Estuary Documentation: API: /collections/"
+      description="https://api.estuary.tech/collections/"
       url="https://docs.estuary.tech/api-collections-list"
       active="api-collections-list"
       curl={curl}
