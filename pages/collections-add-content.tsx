@@ -5,7 +5,10 @@ import * as React from 'react';
 import App from '@components/App';
 
 const endpoint = '/content/add';
-const markdown = `# ➟ ` + endpoint + `
+const markdown =
+  `# ➟ ` +
+  endpoint +
+  `
 
 To add content to a collection that you have already created with the 'create collection' POST API call, use the /content/add endpoint passing the coluuid and dir (optional) query parameters.
 
@@ -45,7 +48,9 @@ const code = `class Example extends React.Component {
     
     xhr.open(
       "POST", 
-      "https://api.estuary.tech/content/add"
+      "https://upload.estuary.tech/content/add" 
+      + "?coluuid=REPLACE_ME_WITH_COLLECTION_ID"
+      + "&dir=/REPLACE_ME_WITH_DESIRED_DIRECTORY"
     );
     xhr.setRequestHeader(
       "Authorization", 
@@ -65,13 +70,13 @@ const code = `class Example extends React.Component {
   }
 }`;
 
-const curl = `curl -X POST https://api.estuary.tech/content/add -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json"  -H "Content-Type: multipart/form-data" -F "file=FILE"`;
+const curl = `curl -X POST 'https://upload.estuary.tech/content/add?coluuid=REPLACE_ME_WITH_COLLECTION_ID&dir=/REPLACE_ME_WITH_DESIRED_DIRECTORY ' -H 'Accept: application/json' -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H 'Content-Type: multipart/form-data' -F 'data=@REPLACE_ME_WITH_YOUR_FILE_PATH'`;
 
 function APICollectionAddContent(props) {
   return (
     <App
       title="Estuary Documentation: API: /collections/add-content"
-      description="https://api.estuary.tech/collections/add-content"
+      description="https://upload.estuary.tech/collections/add-content"
       url="https://docs.estuary.tech/collections-add-content"
       active="api-collections-add-content"
       curl={curl}
