@@ -53,7 +53,7 @@ Notice we also specified a field **dir**. In the next section we will explore an
 #### /collections/fs/add (adding by estuaryID)
 Let's add the same file using its **estuaryID** (which is **10**), using the **/collections/fs/add** endpoint.
 ```
-curl -X POST 'https://api.estuary.tech/collections/fs/add?coluuid=28d923b5-2561-43ee-8ab3-fb42088666f2&content=10&path=/test-dir2' -H 'accept: application/json' -H 'Authorization: Bearer EST9ed28259-a191-45dd-a949-b98bc57eff79ARY'
+curl -X POST 'https://api.estuary.tech/collections/fs/add?coluuid=28d923b5-2561-43ee-8ab3-fb42088666f2&content=10&path=/test-dir2' -H 'accept: application/json' -H 'Authorization: Bearer REPLACE_ME_WITH_API_KEY'
 ```
 **Obs:** Notice we used the uuid of the collection we created earlier (**28d923b5-2561-43ee-8ab3-fb42088666f2**) to identify the collection we want to upload content to.
 
