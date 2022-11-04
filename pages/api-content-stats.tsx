@@ -4,6 +4,7 @@ import * as React from 'react';
 
 import App from '@components/App';
 
+// %method:get%
 const endpoint = '/content/stats';
 const markdown = `# ➟ ` + endpoint + `
 
@@ -19,7 +20,7 @@ We will be adding more code examples and more details over time. Thanks for bear
 
 const code = `class Example extends React.Component {
   componentDidMount() {
-    fetch('https://api.estuary.tech/content/stats', {
+    fetch('https://api.estuary.tech/content/stats?limit=LIMIT&offset=OFFSET', {
       method: 'GET',
       headers: {
         Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',

@@ -29,6 +29,17 @@ def get_endpoint(page_text):
     return endpoint, True
 
 
+def get_method(page_text):
+    # get everything after 'const markdown = `# ➟ ' in that line
+    pattern = re.compile('// %method:(.*)%')
+    method = ""
+    try:
+        method = pattern.search(page_text).groups()[0]
+    except AttributeError:
+        pass
+
+    return method
+
 
 def fix_endpoint(endpoint, page_text):
     # set this as endpoint var 'const endpoint = my-endpoint;
@@ -43,8 +54,8 @@ def fix_endpoint(endpoint, page_text):
     return page_text
 
 
-def fix_curl(endpoint, page_text):
-    curl_filename = './code-snippets/'+endpoint.replace('/', '').split('?')[0]+'/curl.txt'
+def fix_curl(endpoint, method, page_text):
+    curl_filename = './code-snippets/'+endpoint.replace('/', '').split('?')[0]+method+'/curl.txt'
     # set curl to contents of curl_filename
     try:
         with open(curl_filename, 'r') as curl_file:
@@ -55,8 +66,8 @@ def fix_curl(endpoint, page_text):
     return page_text
 
 
-def fix_js(endpoint, page_text):
-    js_filename = './code-snippets/'+endpoint.replace('/', '').split('?')[0]+'/js.txt'
+def fix_js(endpoint, method, page_text):
+    js_filename = './code-snippets/'+endpoint.replace('/', '').split('?')[0]+method+'/js.txt'
 
     # if XMLHttpRequest is in the file, replace this part in code: 'url+"` + endpoint + `"'
     pattern = re.compile('XMLHttpRequest')
@@ -86,16 +97,16 @@ if __name__ == '__main__':
             if endpoint == '':
                 print(f'Skipping {filename}, wrong format')
                 continue
+            method = get_method(page_text)
+            if method == '':
+                print(f'Skipping {filename}, wrong method')
+                continue
+
             print(f'endpoint: {endpoint}; is_new_format: {is_new_format}')
             if not is_new_format:
                 page_text = fix_endpoint(endpoint, page_text)
-            page_text = fix_curl(endpoint, page_text)
-            page_text = fix_js(endpoint, page_text)
-
-            if not is_new_format:
-                page_text = fix_endpoint(endpoint, page_text)
-            page_text = fix_curl(endpoint, page_text)
-            page_text = fix_js(endpoint, page_text)
+            page_text = fix_curl(endpoint, method, page_text)
+            page_text = fix_js(endpoint, method, page_text)
 
         if len(sys.argv) == 2 and sys.argv[1] == "print":
             print(page_text)

@@ -4,6 +4,7 @@ import * as React from 'react';
 
 import App from '@components/App';
 
+// %method:get%
 const endpoint = '/public/metrics/deals-on-chain';
 const markdown = `# ➟ ` + endpoint + `
 

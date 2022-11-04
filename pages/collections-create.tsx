@@ -7,6 +7,7 @@ import App from '@components/App';
 const name = '"A new collection"';
 const description = '"A new collection test"';
 
+// %method:post%
 const endpoint = '/collections/';
 const markdown =
   `# ➟ ` +

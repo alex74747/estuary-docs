@@ -82,7 +82,7 @@ if __name__ == '__main__':
 
     for (endpoint, method) in endpoints_and_methods:
         # create endpoint dir if it does not exist
-        Path('code-snippets/'+endpoint.replace('/', '')).mkdir(exist_ok=True, parents=True)
+        Path('code-snippets/'+endpoint.replace('/', '')+method).mkdir(exist_ok=True, parents=True)
 
         # get parameters from swagger docs
         data = json_data['paths'][endpoint][method]
@@ -115,5 +115,5 @@ if __name__ == '__main__':
               }}
             }}
         '''
-        with open('code-snippets/'+endpoint.replace('/', '')+'/js.txt', 'w+') as txt_file:
+        with open('code-snippets/'+endpoint.replace('/', '')+method+'/js.txt', 'w+') as txt_file:
             txt_file.write(dedent(js_string))

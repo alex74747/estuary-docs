@@ -4,6 +4,7 @@ import * as React from 'react';
 
 import App from '@components/App';
 
+// %method:get%
 const endpoint = '/pinning/pins/{pinid}';
 const markdown = `# ➟ ` + endpoint + `
 
@@ -26,7 +27,7 @@ const route = 'https://api.estuary.tech/pinning/pins/:id';
 const code = `class Example extends React.Component {
   componentDidMount() {
     fetch('https://api.estuary.tech/pinning/pins/{pinid}', {
-      method: 'DELETE',
+      method: 'GET',
       headers: {
         Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
       },
@@ -45,7 +46,7 @@ const code = `class Example extends React.Component {
   }
 }`;
 
-const curl = `curl -X DELETE https://api.estuary.tech/pinning/pins/{pinid} -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json"`;
+const curl = `curl -X GET https://api.estuary.tech/pinning/pins/{pinid} -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json"`;
 
 function PinningGet(props) {
   return (
