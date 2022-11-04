@@ -77,10 +77,11 @@ if __name__ == '__main__':
         methods = json_data['paths'][endpoint].keys()
         for method in methods:
             endpoints_and_methods.append((endpoint, method))
+            print((endpoint, method))
 
     for (endpoint, method) in endpoints_and_methods:
         # create endpoint dir if it does not exist
-        Path('code-snippets/'+endpoint.replace('/', '')).mkdir(exist_ok=True, parents=True)
+        Path('code-snippets/'+endpoint.replace('/', '')+method).mkdir(exist_ok=True, parents=True)
 
         # get parameters from swagger docs
         data = json_data['paths'][endpoint][method]
@@ -90,5 +91,5 @@ if __name__ == '__main__':
 
         # write string out to file
         curl_string = f'curl -X {method.upper()} {BASE_API_URL}{endpoint}{query_parameters_string} -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json" {body_parameters_string} {formdata_parameters_string}'
-        with open('code-snippets/'+endpoint.replace('/', '')+'/curl.txt', 'w+') as txt_file:
+        with open('code-snippets/'+endpoint.replace('/', '')+method+'/curl.txt', 'w+') as txt_file:
             txt_file.write(curl_string)

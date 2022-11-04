@@ -4,6 +4,7 @@ import * as React from 'react';
 
 import App from '@components/App';
 
+// %method:delete%
 const endpoint = '/user/api-keys/{key}';
 const markdown = `# ➟ ` + endpoint + `
 

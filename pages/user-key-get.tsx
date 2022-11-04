@@ -4,6 +4,7 @@ import * as React from 'react';
 
 import App from '@components/App';
 
+// %method:get%
 const endpoint = '/user/api-keys?perms=upload&expiry=24h';
 const markdown = `# ➟ ` + endpoint + `
 
@@ -17,7 +18,7 @@ For more information about this API swagger specification, see [here](swagger-ui
 
 `;
 
-const curl = `curl -X POST https://api.estuary.tech/user/api-keys -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json"`;
+const curl = `curl -X GET https://api.estuary.tech/user/api-keys -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json"`;
 const code = null;
 
 function APIContentStats(props) {

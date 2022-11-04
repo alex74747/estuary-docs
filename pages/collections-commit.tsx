@@ -4,6 +4,7 @@ import * as React from 'react';
 
 import App from '@components/App';
 
+// %method:post%
 const endpoint = '/collections/{coluuid}/commit';
 const markdown =
   `# ➟ ` +

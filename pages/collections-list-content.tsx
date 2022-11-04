@@ -6,6 +6,7 @@ import App from '@components/App';
 
 const COLLECTION_ID = `845c2920-0201-416f-86f9-c7da7b859707`;
 
+// %method:get%
 const endpoint = '/collections/{coluuid}';
 const markdown =
   `# ➟ ` +
