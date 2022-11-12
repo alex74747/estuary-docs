@@ -7,7 +7,7 @@ import markdown from '@documentation/tutorial-listing-your-files.md';
 
 const code = `class Example extends React.Component {
   componentDidMount() {
-    fetch('https://api.estuary.tech/content/list', {
+    fetch('https://api.estuary.tech/content/stats?limit=50&offset=0', {
       method: "GET",
       headers: {
         Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
@@ -27,7 +27,7 @@ const code = `class Example extends React.Component {
 }`;
 
 const curl =
-  'curl -X GET -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" https://api.estuary.tech/content/list';
+  'curl -X GET -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" https://api.estuary.tech/content/stats?limit=50&offset=0';
 
 function TutorialListingYourFiles(props) {
   return (
