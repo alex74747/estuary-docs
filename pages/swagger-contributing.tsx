@@ -5,7 +5,7 @@ import * as React from 'react';
 import App from '@components/App';
 import markdown from '@documentation/swagger-contributing.md';
 
-const key = 'swagger-intro';
+const key = 'swagger-contributing';
 const code = null;
 const curl = null;
 

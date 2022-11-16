@@ -59,6 +59,7 @@ function PinningGet(props) {
       title="Estuary Documentation: Pinning: Get list"
       description="Get list of pinned objects."
       url={`https://docs.estuary.tech/${key}`}
+      active={key}
       curl={curl}
       markdown={markdown}
       code={code}
