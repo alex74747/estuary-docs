@@ -55,6 +55,7 @@ function PinningReplace(props) {
       title="Estuary Documentation: Pinning: Replace"
       description="Replace a pinned object."
       url={`https://docs.estuary.tech/${key}`}
+      active={key}
       curl={curl}
       markdown={markdown}
       code={code}

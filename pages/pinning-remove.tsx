@@ -22,7 +22,7 @@ Check out the [offical IPFS Pinning documentation](https://ipfs.github.io/pinnin
 
 We will be adding more code examples and more details over time. Thanks for bearing with us and our team! If you have ideas, write us some [feedback](https://docs.estuary.tech/feedback).`;
 
-const key = 'pinning-remove';
+const key = 'pinning-remove-by-id';
 const route = 'https://api.estuary.tech/pinning/pins/:id';
 
 const code = `class Example extends React.Component {
@@ -55,6 +55,7 @@ function PinningDelete(props) {
       title="Estuary Documentation: Pinning: Remove"
       description="Remove a pinned object."
       url={`https://docs.estuary.tech/${key}`}
+      active={key}
       curl={curl}
       markdown={markdown}
       code={code}

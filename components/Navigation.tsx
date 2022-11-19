@@ -1,6 +1,7 @@
 import styles from '@components/Navigation.module.scss';
 
 import * as React from 'react';
+import { useEffect, useRef } from 'react'
 import * as SVG from '@components/SVG';
 
 const IntroductionSet = [
@@ -78,7 +79,7 @@ const TutorialSet = [
 ];
 
 const SwaggerSet = [
-  { key: 'swagger-doc', title: 'Introduction', href: '/swagger-intro' },
+  { key: 'swagger-intro', title: 'Introduction', href: '/swagger-intro' },
   { key: 'swagger-ui-page', title: 'SwaggerUI', href: '/swagger-ui-page' },
   { key: 'swagger-contributing', title: 'Contributing', href: '/swagger-contributing' },
   
@@ -191,7 +192,7 @@ const PinningStandardSet = [
     method: 'POST',
   },
   {
-    key: 'pinning-get',
+    key: 'pinning-get-by-id',
     title: 'Get pin by ID',
     href: '/pinning-get',
     method: 'GET',
@@ -240,6 +241,15 @@ const ReferenceSet = [
 ];
 
 export default function Navigation(props) {
+  const activeLink = useRef(null)
+  const scrollToActiveLink = () => {
+    activeLink.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  useEffect(() => {
+    scrollToActiveLink()
+  });
+
   return (
     <React.Fragment>
       <div className={styles.sections__index__title}>Learn</div>
@@ -253,6 +263,9 @@ export default function Navigation(props) {
             href={x.href}
           >
             {x.title}
+            {props.active === x.key ? (
+              <div ref={activeLink} />
+            ) : null}
           </a>
         );
       })}
@@ -270,6 +283,9 @@ export default function Navigation(props) {
             href={x.href}
           >
             {x.title}
+            {props.active === x.key ? (
+              <div ref={activeLink} />
+            ) : null}
           </a>
         );
       })}
@@ -287,6 +303,9 @@ export default function Navigation(props) {
             href={x.href}
           >
             {x.title}
+            {props.active === x.key ? (
+              <div ref={activeLink} />
+            ) : null}
           </a>
         );
       })}
@@ -312,6 +331,9 @@ export default function Navigation(props) {
               </span>
             ) : null}
             <span className={styles.text}>{x.title}</span>
+            {props.active === x.key ? (
+              <div ref={activeLink} />
+            ) : null}
           </a>
         );
       })}
@@ -337,6 +359,9 @@ export default function Navigation(props) {
               </span>
             ) : null}
             <span className={styles.text}>{x.title}</span>
+            {props.active === x.key ? (
+              <div ref={activeLink} />
+            ) : null}
           </a>
         );
       })}
@@ -362,6 +387,9 @@ export default function Navigation(props) {
               </span>
             ) : null}
             <span className={styles.text}>{x.title}</span>
+            {props.active === x.key ? (
+              <div ref={activeLink} />
+            ) : null}
           </a>
         );
       })}
@@ -387,6 +415,9 @@ export default function Navigation(props) {
               </span>
             ) : null}
             <span className={styles.text}>{x.title}</span>
+            {props.active === x.key ? (
+              <div ref={activeLink} />
+            ) : null}
           </a>
         );
       })}

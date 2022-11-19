@@ -59,6 +59,7 @@ function PinningAdd(props) {
       title="Estuary Documentation: Pinning: Add"
       description="Add a new pin object for the current access token."
       url={`https://docs.estuary.tech/${key}`}
+      active={key}
       curl={curl}
       markdown={markdown}
       code={code}
