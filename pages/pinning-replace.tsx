@@ -26,28 +26,33 @@ const key = 'pinning-replace';
 const route = 'https://api.estuary.tech/pinning/pins/:id';
 
 const code = `class Example extends React.Component {
-  componentDidMount() {
-    fetch('https://api.estuary.tech/pinning/pins/{pinid}', {
-      method: 'POST',
-      headers: {
-        Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
-      },
+              componentDidMount() {
+                fetch('https://api.estuary.tech/pinning/pins/{pinid}', {
+                  method: 'POST',
+                  headers: {
+                    Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
+                  },
+                  body: JSON.stringify({
+cid: 'CID',
+, name: 'NAME',
+, origins: 'ORIGINS',
+, meta: 'META',
+})
+                })
+                  .then(data => {
+                    return data.json();
+                  })
+                  .then(data => {
+                    this.setState({ ...data });
+                  });
+              }
 
-    })
-      .then(data => {
-        return data.json();
-      })
-      .then(data => {
-        this.setState({ ...data });
-      });
-  }
+              render() {
+                return <pre>{JSON.stringify(this.state, null, 1)}</pre>;
+              }
+            }`;
 
-  render() {
-    return <pre>{JSON.stringify(this.state, null, 1)}</pre>;
-  }
-}`;
-
-const curl = `curl -X POST https://api.estuary.tech/pinning/pins/{pinid} -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json"`;
+const curl = `curl -X POST https://api.estuary.tech/pinning/pins/{pinid} -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json" -d '{"cid": "CID", "name": "NAME", "origins": "ORIGINS", "meta": "META"}'`;
 
 function PinningReplace(props) {
   return (
