@@ -33,10 +33,7 @@ const code = `class Example extends React.Component {
                     Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
                   },
                   body: JSON.stringify({
-cid: 'CID',
-, name: 'NAME',
-, origins: 'ORIGINS',
-, meta: 'META',
+pin: 'PIN',
 })
                 })
                   .then(data => {
@@ -52,7 +49,7 @@ cid: 'CID',
               }
             }`;
 
-const curl = `curl -X POST https://api.estuary.tech/pinning/pins/{pinid} -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json" -d '{"cid": "CID", "name": "NAME", "origins": "ORIGINS", "meta": "META"}'`;
+const curl = `curl -X POST https://api.estuary.tech/pinning/pins/{pinid} -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json" -d '{"pin": "PIN"}'`;
 
 function PinningReplace(props) {
   return (
