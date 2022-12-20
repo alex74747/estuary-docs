@@ -36,7 +36,7 @@ const code = `class Example extends React.Component {
                     Authorization: 'Bearer REPLACE_ME_WITH_API_KEY',
                   },
                   body: JSON.stringify({
-root: 'YOUR_CID_HERE',
+cid: 'YOUR_CID_HERE',
 })
                 })
                   .then(data => {
@@ -52,7 +52,7 @@ root: 'YOUR_CID_HERE',
               }
             }`;
 
-const curl = `curl -X POST https://api.estuary.tech/content/add-ipfs -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json" -d '{"root": "REPLACE_ME_WITH_CID"}'`;
+const curl = `curl -X POST https://api.estuary.tech/content/add-ipfs -H "Authorization: Bearer REPLACE_ME_WITH_API_KEY" -H "Accept: application/json" -d '{"cid": "REPLACE_ME_WITH_CID"}'`;
 
 function APIContentAddIPFS(props) {
   return (
